@@ -119,7 +119,8 @@ st.markdown(
 
     <div class="container">
         <img src="data:image/png;base64,{main_img_str}" class="main-image" />
-        <h3>Dansk Lov - Danish Law</h3>
+        <h3>Dansk Lov</h3>
+        <h3>Danish Law</h3>
         <hr />
         <div class="flags-container">
             <div class="flag-section">
