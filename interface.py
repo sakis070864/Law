@@ -34,37 +34,116 @@ british_flag_str = image_to_base64(british_flag)
 # Adding the script to the Streamlit app
 st.markdown(
     f"""
-    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: -40px; position: relative;">
-        <img src="data:image/png;base64,{main_img_str}" style="width: 180px; height: 180px; margin-left: -40px; margin-top: -20px;" />
-        <h3 style="margin-bottom: 0; position: relative;">Dansk Lov - Danish Law</h3>
-        <hr style="width: 250px; height: 3px; background-color: black; border: none; position: absolute; top: 172px; margin-left: -23px;" />
-        <div style="display: flex; justify-content: center; align-items: flex-start; margin-top: 80px;">
-            <div style="text-align: center; margin-right: 20px;">
-                <div style="margin-bottom: 10px; position: relative; top: -160px; left: -3ch;">
-                    <a href="https://danishjura.streamlit.app" target="_blank">
-                        <img src="data:image/png;base64,{danish_flag_str}" style="width: 80px; height: 80px;" />
-                    </a>
-                </div>
-                <div style="font-size: 18px; position: relative; top: -140px; padding-left: 12ch; border: 1px solid black; user-select: none; background-color: #f0f0f0; padding: 10px; width: 480px;">
-                    <p style="margin-bottom: 0;"><b>Klik på flaget for at vælge et sprog</b></p>
-                    <p style="margin-top: 0;">Denne app er designet til at hjælpe advokater og jurastuderende med at udforske Danske juridiske paragraffer og relevante punkter relateret til deres forespørgsler. Ved at bruge denne app kan de bygge deres sager mere effektivt og opnå bedre resultater.</p>
+    <style>
+    .container {{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -40px;
+        position: relative;
+    }}
+    .main-image {{
+        width: 180px;
+        height: 180px;
+        margin-left: -40px;
+        margin-top: -20px;
+    }}
+    h3 {{
+        margin-bottom: 0;
+        position: relative;
+    }}
+    hr {{
+        width: 250px;
+        height: 3px;
+        background-color: black;
+        border: none;
+        position: absolute;
+        top: 172px;
+        margin-left: -23px;
+    }}
+    .flags-container {{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+    }}
+    .flag-section {{
+        text-align: center;
+        margin: 10px 0;
+    }}
+    .flag-image {{
+        width: 80px;
+        height: 80px;
+    }}
+    .info-box {{
+        font-size: 18px;
+        position: relative;
+        padding: 10px;
+        border: 1px solid black;
+        background-color: #f0f0f0;
+        width: 100%;
+        max-width: 480px;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }}
+    .danish-info {{
+        min-height: 150px;
+    }}
+    .english-info {{
+        min-height: 170px;
+    }}
+    .footer {{
+        margin-top: 20px;
+        text-align: center;
+        color: gray;
+    }}
+    @media (min-width: 768px) {{
+        .flags-container {{
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }}
+        .flag-section {{
+            margin: 0 20px;
+        }}
+        .info-box {{
+            padding-left: 1em;
+        }}
+    }}
+    </style>
+
+    <div class="container">
+        <img src="data:image/png;base64,{main_img_str}" class="main-image" />
+        <h3>Dansk Lov - Danish Law</h3>
+        <hr />
+        <div class="flags-container">
+            <div class="flag-section">
+                <a href="https://danishjura.streamlit.app" target="_blank">
+                    <img src="data:image/png;base64,{danish_flag_str}" class="flag-image" />
+                </a>
+                <div class="info-box danish-info">
+                    <p><b>Klik på flaget for at vælge et sprog</b></p>
+                    <p>Denne app er designet til at hjælpe advokater og jurastuderende med at udforske Danske juridiske paragraffer og relevante punkter relateret til deres forespørgsler. Ved at bruge denne app kan de bygge deres sager mere effektivt og opnå bedre resultater.</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-left: 20px;">
-                <div style="margin-bottom: 10px; position: relative; top: -160px;">
-                    <a href="https://danishlaw-en.streamlit.app" target="_blank">
-                        <img src="data:image/png;base64,{british_flag_str}" style="width: 80px; height: 80px;" />
-                    </a>
-                </div>
-                <div style="font-size: 18px; position: relative; top: -140px; padding-left: 12ch; border: 1px solid black; user-select: none; background-color: #f0f0f0; padding: 10px; width: 480px;">
-                    <p style="margin-bottom: 0;"><b>Click on the flag to choose a language</b></p>
-                    <p style="margin-top: 0;">This app is designed to assist lawyers and law students in exploring Danish legal paragraphs and relevant points related to their inquiries. By using this app, they can build their cases more efficiently and achieve better results.</p>
+            <div class="flag-section">
+                <a href="https://danishlaw-en.streamlit.app" target="_blank">
+                    <img src="data:image/png;base64,{british_flag_str}" class="flag-image" />
+                </a>
+                <div class="info-box english-info">
+                    <p><b>Click on the flag to choose a language</b></p>
+                    <p>This app is designed to assist lawyers and law students in exploring Danish legal paragraphs and relevant points related to their inquiries. By using this app, they can build their cases more efficiently and achieve better results.</p>
                 </div>
             </div>
         </div>
-        <div style="margin-top: -120px; text-align: center; color: gray;">
+        <div class="footer">
             <p>This AI application is expertly designed and trained to serve as a legal expert in the Danish legal system, drawing from an extensive knowledge base of over one million pages</p>
-            <p>Developed by Sakis Athan. For inquiries, please contact sakis@post.com."</p>
+            <p>Developed by Sakis Athan. For inquiries, please contact sakis@post.com.</p>
         </div>
     </div>
     """,
