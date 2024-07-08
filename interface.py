@@ -31,7 +31,7 @@ british_flag = Image.open(british_flag_path)
 british_flag = british_flag.resize(flag_size)
 british_flag_str = image_to_base64(british_flag)
 
-# Adding the script to the Streamlit app
+# HTML and CSS for layout
 st.markdown(
     f"""
     <style>
@@ -115,6 +115,24 @@ st.markdown(
             padding-left: 1em;
         }}
     }}
+    .button-container {{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }}
+    .custom-button {{
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        border: 2px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+    }}
+    .custom-button:hover {{
+        background-color: #f0f0f0;
+    }}
     </style>
 
     <div class="container">
@@ -122,30 +140,40 @@ st.markdown(
         <h3>Dansk Lov</h3>
         <h3>Danish Law</h3>
         <hr />
-        <div class="flags-container">
-            <div class="flag-section">
-                <a href="https://danishjura.streamlit.app" target="_blank">
-                    <img src="data:image/png;base64,{danish_flag_str}" class="flag-image" />
-                </a>
-                <div class="info-box danish-info">
-                    <p><b>Klik på flaget for at vælge et sprog</b></p>
-                    <p>Denne app er designet til at hjælpe advokater og jurastuderende med at udforske Danske juridiske paragraffer og relevante punkter relateret til deres forespørgsler. Ved at bruge denne app kan de bygge deres sager mere effektivt og opnå bedre resultater.</p>
-                </div>
-            </div>
-            <div class="flag-section">
-                <a href="https://danishlaw-en.streamlit.app" target="_blank">
-                    <img src="data:image/png;base64,{british_flag_str}" class="flag-image" />
-                </a>
-                <div class="info-box english-info">
-                    <p><b>Click on the flag to choose a language</b></p>
-                    <p>This app is designed to assist lawyers and law students in exploring Danish legal paragraphs and relevant points related to their inquiries. By using this app, they can build their cases more efficiently and achieve better results.</p>
-                </div>
+        <div class="button-container">
+            <a href="https://youtu.be/tjge7oYNrn4" target="_blank" class="custom-button">Instruction Video</a>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Continue with the rest of the HTML and CSS code
+st.markdown(
+    f"""
+    <div class="flags-container">
+        <div class="flag-section">
+            <a href="https://danishjura.streamlit.app" target="_blank">
+                <img src="data:image/png;base64,{danish_flag_str}" class="flag-image" />
+            </a>
+            <div class="info-box danish-info">
+                <p><b>Klik på flaget for at vælge et sprog</b></p>
+                <p>Denne app er designet til at hjælpe advokater og jurastuderende med at udforske Danske juridiske paragraffer og relevante punkter relateret til deres forespørgsler. Ved at bruge denne app kan de bygge deres sager mere effektivt og opnå bedre resultater.</p>
             </div>
         </div>
-        <div class="footer">
-            <p>This AI application is expertly designed and trained to serve as a legal expert in the Danish legal system, drawing from an extensive knowledge base of over one million pages</p>
-            <p>Developed by Sakis Athan. For inquiries, please contact sakis@post.com.</p>
+        <div class="flag-section">
+            <a href="https://danishlaw-en.streamlit.app" target="_blank">
+                <img src="data:image/png;base64,{british_flag_str}" class="flag-image" />
+            </a>
+            <div class="info-box english-info">
+                <p><b>Click on the flag to choose a language</b></p>
+                <p>This app is designed to assist lawyers and law students in exploring Danish legal paragraphs and relevant points related to their inquiries. By using this app, they can build their cases more efficiently and achieve better results.</p>
+            </div>
         </div>
+    </div>
+    <div class="footer">
+        <p>This AI application is expertly designed and trained to serve as a legal expert in the Danish legal system, drawing from an extensive knowledge base of over one million pages</p>
+        <p>Developed by Sakis Athan. For inquiries, please contact sakis@post.com.</p>
     </div>
     """,
     unsafe_allow_html=True
